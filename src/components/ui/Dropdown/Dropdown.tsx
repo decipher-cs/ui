@@ -34,7 +34,7 @@ const Dropdown = ({children, open, trigger, defaultOpen = false, placement = 'bo
 
         {trigger ?
             trigger(refs.setReference) :
-            <ButtonPrimitive role='button' aria-expanded={open} buttonRef={refs.setReference} onClick={() => setVisible((p) => !p)}>show/hide</ButtonPrimitive>
+            <ButtonPrimitive role='button' aria-expanded={visible} buttonRef={refs.setReference} onClick={() => setVisible((p) => !p)}>show/hide</ButtonPrimitive>
         }
 
         <div style={{overflowY: 'auto', ...floatingStyles}} ref={refs.setFloating}>
