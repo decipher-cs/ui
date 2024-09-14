@@ -1,6 +1,6 @@
 import React, {PropsWithChildren, ReactElement, useEffect, useState} from 'react';
 import ButtonPrimitive from '~/core/primitives/Button';
-import {Placement, UseFloatingReturn, useFloating} from '@floating-ui/react';
+import {Placement, UseFloatingReturn, size, useFloating} from '@floating-ui/react';
 
 /* https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/
  * CHECKLIST
@@ -22,7 +22,13 @@ const Dropdown = ({children, open, trigger, defaultOpen = false, placement = 'bo
         open !== undefined && setVisible(open);
     }, [open]);
 
-    const {refs, floatingStyles}= useFloating({placement});
+    const {refs, floatingStyles}= useFloating({placement, middleware: [
+        size({
+            apply({availableHeight, elements}) {
+                elements.floating.style.maxHeight = availableHeight+'px';
+            },
+        }),
+    ]});
 
     return <div>
 
@@ -31,7 +37,7 @@ const Dropdown = ({children, open, trigger, defaultOpen = false, placement = 'bo
             <ButtonPrimitive role='button' aria-expanded={open} buttonRef={refs.setReference} onClick={() => setVisible((p) => !p)}>show/hide</ButtonPrimitive>
         }
 
-        <div style={{overflow: 'hidden', ...floatingStyles}} ref={refs.setFloating}>
+        <div style={{overflowY: 'auto', ...floatingStyles}} ref={refs.setFloating}>
             {visible && children}
         </div>
 
