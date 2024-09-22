@@ -4,7 +4,6 @@ import {useState} from 'react';
 import SandboxEditor from '~/components/tools/SandboxEditor/SandboxEditor';
 import React from 'react';
 import Button from '../Button/Button';
-import {DropdownRoot} from './shards/DropdownRoot';
 
 const placeholderWords= ['Eternity', 'Wisdom', 'Truth', 'Love', 'Freedom', 'Serenity', 'Hope', 'Courage', 'Grace', 'Harmony', 'Solitude', 'Enlightenment', 'Peace', 'Joy', 'Unity', 'Transcendence', 'Mystery', 'Compassion', 'Faith', 'Destiny'].map((v) => (<div key={v}>{v}</div>));
 
@@ -31,16 +30,15 @@ export const CustomTrigger= () => {
     return (
         <section>
             <SandboxEditor>
-                <DropdownRoot>
-                    {/* open={open} trigger={(ref) => <Button buttonRef={ref} onClick={toggleHidden}>Toggle</Button>} */}
-                    <DropdownRoot.Trigger>
+                <Dropdown.Root>
+                    <Dropdown.Trigger>
                         Toggle
-                    </DropdownRoot.Trigger>
+                    </Dropdown.Trigger>
 
-                    <DropdownRoot.Portal>
+                    <Dropdown.Portal>
                         {placeholderWords}
-                    </DropdownRoot.Portal>
-                </DropdownRoot>
+                    </Dropdown.Portal>
+                </Dropdown.Root>
             </SandboxEditor>
         </section>
     );
@@ -49,16 +47,15 @@ export const CustomTrigger= () => {
 export const styled= () => {
     return (
         <SandboxEditor>
-            <DropdownRoot>
-                {/* open={open} trigger={(ref) => <Button buttonRef={ref} onClick={toggleHidden}>Toggle</Button>} */}
-                <DropdownRoot.Trigger>
+            <Dropdown.Root>
+                <Dropdown.Trigger>
                         Click to show
-                </DropdownRoot.Trigger>
+                </Dropdown.Trigger>
 
-                <DropdownRoot.Portal>
+                <Dropdown.Portal>
                     {placeholderWords}
-                </DropdownRoot.Portal>
-            </DropdownRoot>
+                </Dropdown.Portal>
+            </Dropdown.Root>
         </SandboxEditor>
     );
 };

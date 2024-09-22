@@ -1,5 +1,3 @@
-import {Trigger} from './DropdownTrigger';
-import {Portal} from './DropdownPortal';
 import React, {PropsWithChildren, useEffect, useState} from 'react';
 import {Placement, size, useFloating} from '@floating-ui/react';
 import DropdownContext from '../context/DropdownContext';
@@ -25,11 +23,7 @@ export const DropdownRoot = ({children, open, defaultOpen = false, placement = '
         }),
     ]});
 
-    return <DropdownContext.Provider value={{visible: visible, toggleVisibility: () => setVisible((p) => !p), triggerRef: refs.setReference, portalRef: refs.setFloating, floatingPortalCss: floatingStyles}}>
+    return <DropdownContext.Provider value={{visible: visible, toggleVisibility: () => setVisible(!visible), triggerRef: refs.setReference, portalRef: refs.setFloating, floatingPortalCss: floatingStyles}}>
         {children}
     </DropdownContext.Provider>;
 };
-
-
-DropdownRoot.Trigger=Trigger;
-DropdownRoot.Portal=Portal;
