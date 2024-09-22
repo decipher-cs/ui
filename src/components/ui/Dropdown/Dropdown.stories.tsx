@@ -4,6 +4,7 @@ import {useState} from 'react';
 import SandboxEditor from '~/components/tools/SandboxEditor/SandboxEditor';
 import React from 'react';
 import Button from '../Button/Button';
+import {DropdownRoot} from './shards/DropdownRoot';
 
 const placeholderWords= ['Eternity', 'Wisdom', 'Truth', 'Love', 'Freedom', 'Serenity', 'Hope', 'Courage', 'Grace', 'Harmony', 'Solitude', 'Enlightenment', 'Peace', 'Joy', 'Unity', 'Transcendence', 'Mystery', 'Compassion', 'Faith', 'Destiny'].map((v) => (<div key={v}>{v}</div>));
 
@@ -27,16 +28,37 @@ export const DefaultTrigger= () => {
 };
 
 export const CustomTrigger= () => {
-    const [open, setOpen] =useState(false);
-    const toggleHidden=() => setOpen((p) => !p);
-
     return (
         <section>
             <SandboxEditor>
-                <Dropdown open={open} trigger={(ref) => <Button buttonRef={ref} onClick={toggleHidden}>Toggle</Button>}>
-                    {placeholderWords}
-                </Dropdown>
+                <DropdownRoot>
+                    {/* open={open} trigger={(ref) => <Button buttonRef={ref} onClick={toggleHidden}>Toggle</Button>} */}
+                    <DropdownRoot.Trigger>
+                        Toggle
+                    </DropdownRoot.Trigger>
+
+                    <DropdownRoot.Portal>
+                        {placeholderWords}
+                    </DropdownRoot.Portal>
+                </DropdownRoot>
             </SandboxEditor>
         </section>
+    );
+};
+
+export const styled= () => {
+    return (
+        <SandboxEditor>
+            <DropdownRoot>
+                {/* open={open} trigger={(ref) => <Button buttonRef={ref} onClick={toggleHidden}>Toggle</Button>} */}
+                <DropdownRoot.Trigger>
+                        Click to show
+                </DropdownRoot.Trigger>
+
+                <DropdownRoot.Portal>
+                    {placeholderWords}
+                </DropdownRoot.Portal>
+            </DropdownRoot>
+        </SandboxEditor>
     );
 };
