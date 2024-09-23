@@ -1,14 +1,12 @@
 import Dropdown from '~/components/ui/Dropdown/Dropdown';
 import {Meta} from '@storybook/react/*';
-import {useState} from 'react';
 import SandboxEditor from '~/components/tools/SandboxEditor/SandboxEditor';
 import React from 'react';
-import Button from '../Button/Button';
 
 const placeholderWords= ['Eternity', 'Wisdom', 'Truth', 'Love', 'Freedom', 'Serenity', 'Hope', 'Courage', 'Grace', 'Harmony', 'Solitude', 'Enlightenment', 'Peace', 'Joy', 'Unity', 'Transcendence', 'Mystery', 'Compassion', 'Faith', 'Destiny'].map((v) => (<div key={v}>{v}</div>));
 
-const meta: Meta<typeof Dropdown> = {
-    component: Dropdown,
+const meta: Meta<typeof Dropdown['Root']> = {
+    component: Dropdown.Root,
     title: 'UI/Input/Dropdown',
 };
 
@@ -18,44 +16,34 @@ export const DefaultTrigger= () => {
     return (
         <section>
             <SandboxEditor>
-                <Dropdown>
-                    {placeholderWords}
-                </Dropdown>
-            </SandboxEditor>
-        </section>
-    );
-};
-
-export const CustomTrigger= () => {
-    return (
-        <section>
-            <SandboxEditor>
                 <Dropdown.Root>
-                    <Dropdown.Trigger>
-                        Toggle
-                    </Dropdown.Trigger>
+                    <Dropdown.Trigger/>
 
-                    <Dropdown.Portal>
+                    <Dropdown.Content>
                         {placeholderWords}
-                    </Dropdown.Portal>
+                    </Dropdown.Content>
                 </Dropdown.Root>
             </SandboxEditor>
         </section>
     );
 };
 
-export const styled= () => {
+export const Styled = () => {
     return (
-        <SandboxEditor>
-            <Dropdown.Root>
-                <Dropdown.Trigger>
-                        Click to show
-                </Dropdown.Trigger>
+        <section>
+            <SandboxEditor>
+                <Dropdown.Root defaultOpen={true}>
+                    <Dropdown.Trigger className='p-3 border border-red-500 rounded-lg'>
+                        Toggle
+                    </Dropdown.Trigger>
 
-                <Dropdown.Portal>
-                    {placeholderWords}
-                </Dropdown.Portal>
-            </Dropdown.Root>
-        </SandboxEditor>
+                    <Dropdown.Content>
+                        <div className='border p-4 rounded-lg mt-2 border-red-600'>
+                        This is an example
+                        </div>
+                    </Dropdown.Content>
+                </Dropdown.Root>
+            </SandboxEditor>
+        </section>
     );
 };
