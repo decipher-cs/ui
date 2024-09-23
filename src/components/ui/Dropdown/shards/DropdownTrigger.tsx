@@ -1,8 +1,10 @@
-import React, {PropsWithChildren, useContext} from 'react'
+import React, {PropsWithChildren, useContext} from 'react';
 import DropdownContext from '../context/DropdownContext';
-import ButtonPrimitive from '~/core/primitives/Button';
+import ButtonPrimitive, {ButtonPrimitiveProps} from '~/core/primitives/Button';
 
-export const Trigger = ({children}:PropsWithChildren) => {
+type DropdownTriggerProps = ButtonPrimitiveProps & PropsWithChildren
+
+export const Trigger = ({children, ...buttomProps}:DropdownTriggerProps) => {
     const ctx = useContext(DropdownContext);
 
     if (ctx === null) return ctx;
@@ -10,6 +12,6 @@ export const Trigger = ({children}:PropsWithChildren) => {
     const {visible, toggleVisibility, triggerRef} = ctx;
 
     return (
-        <ButtonPrimitive role='button' aria-expanded={visible} buttonRef={triggerRef} onClick={toggleVisibility}>{children || 'show/hide'}</ButtonPrimitive>
+        <ButtonPrimitive role='button' aria-expanded={visible} buttonRef={triggerRef} onClick={toggleVisibility} {...buttomProps}>{children || "Toggle"}</ButtonPrimitive>
     );
 };

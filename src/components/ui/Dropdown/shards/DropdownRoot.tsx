@@ -8,7 +8,7 @@ export type DropdownProps ={
     placement?: Placement
 } & PropsWithChildren
 
-export const DropdownRoot = ({children, open, defaultOpen = false, placement = 'bottom-start'}: DropdownProps) => {
+export const Root = ({children, open, defaultOpen = false, placement = 'bottom-start'}: DropdownProps) => {
     const [visible, setVisible] = useState(defaultOpen);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export const DropdownRoot = ({children, open, defaultOpen = false, placement = '
         }),
     ]});
 
-    return <DropdownContext.Provider value={{visible: visible, toggleVisibility: () => setVisible(!visible), triggerRef: refs.setReference, portalRef: refs.setFloating, floatingPortalCss: floatingStyles}}>
+    return <DropdownContext.Provider value={{visible: visible, toggleVisibility: () => setVisible(!visible), triggerRef: refs.setReference, floatingContentRef: refs.setFloating, floatingContentCss: floatingStyles}}>
         {children}
     </DropdownContext.Provider>;
 };
