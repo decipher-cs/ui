@@ -1,11 +1,11 @@
-import { CSSProperties, createContext } from "react";
+import {CSSProperties, createContext} from "react";
 
 type TDropdownContext= {
     visible: boolean;
     toggleVisibility:()=>void;
     triggerRef?: React.LegacyRef<HTMLButtonElement> | undefined;
-    portalRef?: React.LegacyRef<HTMLDivElement> | undefined;
-    floatingPortalCss: CSSProperties
+    floatingContentRef?: React.LegacyRef<HTMLDivElement> | undefined;
+    floatingContentCss: CSSProperties
 }
 
 const DropdownContext = createContext<null | TDropdownContext>(null);

@@ -1,15 +1,15 @@
 import React, {PropsWithChildren, useContext} from "react";
 import DropdownContext from "../context/DropdownContext";
 
-export const Portal = ({children}: PropsWithChildren) => {
+export const Content = ({children}: PropsWithChildren) => {
     const ctx = useContext(DropdownContext);
 
     if (ctx === null) return ctx;
 
-    const {floatingPortalCss, visible, portalRef} = ctx;
+    const {floatingContentCss, visible, floatingContentRef} = ctx;
 
     return (
-        <div style={{overflowY: 'auto', ...floatingPortalCss}} ref={portalRef}>
+        <div style={{overflowY: 'auto', ...floatingContentCss}} ref={floatingContentRef}>
             {visible && children}
         </div>
     );
