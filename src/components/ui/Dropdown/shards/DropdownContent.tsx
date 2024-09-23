@@ -9,7 +9,7 @@ export const Content = ({children}: PropsWithChildren) => {
     const {floatingContentCss, visible, floatingContentRef} = ctx;
 
     return (
-        <div style={{overflowY: 'auto', ...floatingContentCss}} ref={floatingContentRef}>
+        <div role='menu' aria-hidden={!visible} style={{overflowY: 'auto', ...floatingContentCss}} ref={floatingContentRef}>
             {visible && children}
         </div>
     );
