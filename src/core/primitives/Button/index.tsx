@@ -17,7 +17,7 @@ import React, {PropsWithChildren} from 'react';
 
  */
 
-type ButtonPrimitiveProps = {
+export type ButtonPrimitiveProps = {
     label?: string,
     description?: string
     buttonRef?: React.LegacyRef<HTMLButtonElement> | undefined
